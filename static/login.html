@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dota Guesser</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="view active" style="justify-content: center;">
+        <div class="card auth-container">
+            <h1><span class="material-icon">sports_esports</span> Dota Guesser</h1>
+            <p style="color: var(--md-sys-color-on-surface-variant); margin-bottom: 24px;">Please authorise to continue</p>
+            
+            <div class="input-group">
+                <input type="text" id="username" placeholder="Ім'я користувача" autocomplete="off">
+            </div>
+            <div class="input-group">
+                <input type="password" id="password" placeholder="Пароль">
+            </div>
+            
+            <div id="auth-message" class="message"></div>
+            
+            <div class="auth-actions">
+                <button class="btn btn-primary" onclick="handleLogin()">
+                    <span class="material-icon">login</span> Login
+                </button>
+                <button class="btn btn-tonal" onclick="handleRegister()">
+                    <span class="material-icon">person_add</span> Register
+                </button>
+            </div>
+        </div>
+    </div>
+    
+     <script src="/static/js/app.js"></script>
+</body>
+</html>
