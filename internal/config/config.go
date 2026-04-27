@@ -26,7 +26,7 @@ type Config struct {
 func LoadConfig() (*Config, error) {
 	err := godotenv.Load()
 	if err != nil {
-		return nil, fmt.Errorf("config.LoadConfig: %w", err)
+		fmt.Println("config.LoadConfig: %w", err)
 	}
 	if jwt, err := strconv.Atoi(os.Getenv("TOKEN_EXPIRATION_HOURS")); err == nil {
 		return &Config{
