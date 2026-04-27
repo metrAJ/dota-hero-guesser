@@ -20,6 +20,7 @@ type Config struct {
 	JWTExpirationTime int
 	RedisHost         string
 	RedisPassword     string
+	ServerPort        string
 }
 
 func LoadConfig() (*Config, error) {
@@ -29,6 +30,7 @@ func LoadConfig() (*Config, error) {
 	}
 	if jwt, err := strconv.Atoi(os.Getenv("TOKEN_EXPIRATION_HOURS")); err == nil {
 		return &Config{
+			ServerPort:        os.Getenv("PORT"),
 			DBHost:            os.Getenv("DB_HOST"),
 			DBPort:            os.Getenv("DB_PORT"),
 			DBUser:            os.Getenv("DB_USER"),
