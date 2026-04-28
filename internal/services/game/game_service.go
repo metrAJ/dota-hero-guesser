@@ -53,6 +53,8 @@ func (s *gameService) ProcessGuess(ctx context.Context, userID uint, roundID uin
 			message = "Wrong! Here is Backpack Items."
 		case 3:
 			message = "Wrong! Here is Hero Attribute."
+		case 4:
+			message = "Wrong! Last try."
 		default:
 			s.repo.CompleteRound(ctx, userID, history.ID, models.StatusLost)
 			history.Status = models.StatusLost

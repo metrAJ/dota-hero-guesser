@@ -144,7 +144,7 @@ async function startMatchmaking() {
         };
     } catch (e) {
         console.error(e);
-        alert("Помилка підключення до сервера.");
+        alert("Error connecting to server.");
         window.location.href = '/';
     }
 }
@@ -209,7 +209,7 @@ function handleServerMessage(msg) {
             
             // 2. DYNAMIC ITEM RENDERING: Extract and draw Backpack Items
             if (payload.backpack_items && Array.isArray(payload.backpack_items) && payload.backpack_items.length > 0) {
-                roundHtml += `<div style="margin-top: 12px; font-size: 14px; color: var(--md-sys-color-on-surface-variant);">Рюкзак:</div>`;
+                roundHtml += `<div style="margin-top: 12px; font-size: 14px; color: var(--md-sys-color-on-surface-variant);">Backpack:</div>`;
                 roundHtml += renderItemsHtml(payload.backpack_items);
             }
             
@@ -368,10 +368,10 @@ function showEndScreen(status, correctHeroId) {
 
         if (status.includes("Перемога") || status.includes("Win") || status === 'won') {
             if (icon) icon.innerHTML = `<img src="${heroImgUrl}" style="width: 120px; border-radius: 8px; border: 4px solid #69f0ae; box-shadow: 0 0 40px rgba(105, 240, 174, 0.8);">`;
-            if (message) message.innerHTML = `<span style="color: #69f0ae; font-size: 32px; font-weight: bold; text-shadow: 0 2px 4px rgba(0,0,0,0.8);">${status}</span><br><span style="font-size: 16px; margin-top: 12px; display: block; color: white;">Правильна відповідь</span>`;
+            if (message) message.innerHTML = `<span style="color: #69f0ae; font-size: 32px; font-weight: bold; text-shadow: 0 2px 4px rgba(0,0,0,0.8);">${status}</span><br><span style="font-size: 16px; margin-top: 12px; display: block; color: white;">Correct answer:</span>`;
         } else {
             if (icon) icon.innerHTML = `<img src="${heroImgUrl}" style="width: 120px; border-radius: 8px; border: 4px solid #ff5252; filter: grayscale(100%); box-shadow: 0 0 40px rgba(255, 82, 82, 0.8);">`;
-            if (message) message.innerHTML = `<span style="color: #ff5252; font-size: 32px; font-weight: bold; text-shadow: 0 2px 4px rgba(0,0,0,0.8);">${status}</span><br><span style="font-size: 16px; margin-top: 12px; display: block; color: white;">Герой був:</span>`;
+            if (message) message.innerHTML = `<span style="color: #ff5252; font-size: 32px; font-weight: bold; text-shadow: 0 2px 4px rgba(0,0,0,0.8);">${status}</span><br><span style="font-size: 16px; margin-top: 12px; display: block; color: white;">Here is the correct answer</span>`;
         }
     } catch (err) {
         console.error("❌ Crash inside showEndScreen:", err);

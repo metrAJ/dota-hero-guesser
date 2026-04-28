@@ -159,6 +159,11 @@ async function loadGame() {
         if(res.status === 401) { handleLogout(); return; }
         const game = await res.json();
         
+        const attemptsEl = document.getElementById('attempts-display');
+        if (attemptsEl && game.attempts !== undefined) {
+            attemptsEl.innerText = `Attempts: ${game.attempts}`;
+        }
+
         currentRoundID = game.round_id;
         document.getElementById('game-message').textContent = game.message || '';
         
@@ -292,10 +297,18 @@ async function submitGuess() {
             alert('Error submitting: ' + (game.message || 'Unknown error'));
             return;
         }
+        const attemptsEl = document.getElementById('attempts-display');
+        if (attemptsEl && game.attempts !== undefined) {
+            attemptsEl.innerText = `Attempts: ${game.attempts}`;
+        }
+
 
         if (game.status && game.status !== 'playing') {
             showEndScreen(game.status, game.correct_hero);
         } else {
+            if (game.message) {
+                showToast(game.message); 
+            }
             loadGame();
         }
     } catch(e) {
@@ -329,4 +342,17 @@ function hideEndScreen() {
 function startNewRound() {
     hideEndScreen();
     loadGame(); 
+}
+
+function showToast(message) {
+    const toast = document.getElementById('toast-message');
+    if (!toast) return;
+    
+    toast.innerHTML = `<span class="material-icon" style="vertical-align: middle; margin-right: 8px;">error</span>${message}`;
+    toast.classList.add('show');
+    
+    // Automatically hide it after 3 seconds
+    setTimeout(() => {
+        toast.classList.remove('show');
+    }, 3000);
 }

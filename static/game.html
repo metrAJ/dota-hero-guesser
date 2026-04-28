@@ -13,11 +13,19 @@
 </head>
 <body>
     <div class="view active" id="game-view">
-        <div class="game-header">
+        <div class="game-header" style="display: flex; justify-content: space-between; align-items: center;">
             <button class="btn btn-tonal" onclick="goHome()">
                 <span class="material-icon">arrow_back</span> Main page
             </button>
+            
+            <div id="attempts-display" style="font-size: 18px; font-weight: bold; color: #ffeb3b; background: rgba(0,0,0,0.3); padding: 8px 16px; border-radius: 20px;">
+                Attempts: 0
+            </div>
         </div>
+
+        <div id="game-message" style="color: var(--md-sys-color-primary); margin-bottom: 16px; font-weight: 500;"></div>
+
+        <div id="toast-message" class="toast">Wrong guess!</div>
 
         <div id="game-message" style="color: var(--md-sys-color-primary); margin-bottom: 16px; font-weight: 500;"></div>
 
